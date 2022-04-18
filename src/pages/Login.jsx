@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
+import Loading from '../components/Loading';
 
 class Login extends Component {
   constructor() {
@@ -65,7 +66,7 @@ class Login extends Component {
     return (
 
       <div data-testid="page-login">
-        {loading ? <p>Carregando...</p>
+        {loading ? <Loading />
           : (
             <section>
               <h1>Login</h1>
