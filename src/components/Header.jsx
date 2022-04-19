@@ -13,8 +13,6 @@ class Header extends Component {
   }
 
   async componentDidMount() {
-    console.log('esta sendo montado');
-
     this.setState({
       loading: true,
     });
