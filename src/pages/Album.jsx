@@ -20,29 +20,30 @@ class Album extends Component {
     const id = history.location.pathname;
     const albumId = id.replace(/[^0-9]/g, '');
     const musics = await getMusics(albumId);
-    const info = musics.find((element) => element.wrapperType === 'collection');
-    const tracks = musics.filter((element) => element.wrapperType === 'track');
+    console.log(musics.filter((element) => element.kind === 'song'));
     this.setState({
-      musicas: tracks,
-      artistName: info.artistName,
-      collectionName: info.collectionName,
+      musicas: musics,
+      artistName: musics[0].artistName,
+      collectionName: musics[0].collectionName,
     });
   }
 
   render() {
     const { musicas, artistName, collectionName } = this.state;
+    const tracks = musicas.filter((element) => element.kind === 'song');
     return (
       <div data-testid="page-album">
         <Header />
+        Album
         <p data-testid="artist-name">{artistName}</p>
         <p data-testid="album-name">{collectionName}</p>
-        {musicas.map((element, index) => (
-          <div key={ index }>
+        {tracks.map((element, index) => (
+          <section key={ index }>
             <MusicCard
               musicName={ element.trackName }
               previewUrl={ element.previewUrl }
             />
-          </div>
+          </section>
         ))}
       </div>
     );
@@ -50,7 +51,7 @@ class Album extends Component {
 }
 
 Album.propTypes = {
-  history: PropTypes.shape.isRequired,
+  history: PropTypes.string.isRequired,
 };
 
 export default Album;
