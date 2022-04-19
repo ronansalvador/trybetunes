@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends Component {
@@ -9,25 +9,45 @@ class MusicCard extends Component {
     this.state = {
       checked: false,
       loading: false,
+      listFavorite: [],
     };
   }
 
-  addFavorite = async ({ target }) => {
+  async componentDidMount() {
+    const { trackId } = this.props;
+    const listFavorite = await getFavoriteSongs();
+    console.log(listFavorite);
+    const isfavorite = listFavorite.some((music) => music.trackId === trackId);
+    console.log(isfavorite);
+    if (isfavorite) {
+      this.setState({
+        checked: true,
+      });
+    }
+    // console.log(this.props.trackId);
+    // console.log(this.state.checked);
     this.setState({
-      checked: true,
-      loading: true,
+      listFavorite,
     });
+  }
+
+  addFavorite = async ({ target }) => {
+    this.setState((prevState) => ({
+      checked: !prevState.checked,
+      loading: !prevState.loading,
+    }));
     console.log(target.parentElement.parentElement.parentElement);
     console.log('clicou');
     await addSong(this.props);
-    this.setState({
-      loading: false,
-    });
+    this.setState((prevState) => ({
+      loading: !prevState.loading,
+    }));
   }
 
   render() {
     const { musicName, previewUrl, trackId } = this.props;
-    const { checked, loading } = this.state;
+    const { checked, loading, listFavorite } = this.state;
+    console.log(listFavorite);
     return (
 
       <section>
