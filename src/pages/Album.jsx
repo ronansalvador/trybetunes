@@ -42,6 +42,7 @@ class Album extends Component {
             <MusicCard
               musicName={ element.trackName }
               previewUrl={ element.previewUrl }
+              trackId={ element.trackId }
             />
           </section>
         ))}
