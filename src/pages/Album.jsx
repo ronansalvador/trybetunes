@@ -16,11 +16,8 @@ class Album extends Component {
   }
 
   async componentDidMount() {
-    const { history } = this.props;
-    const id = history.location.pathname;
-    const albumId = id.replace(/[^0-9]/g, '');
-    const musics = await getMusics(albumId);
-    console.log(musics.filter((element) => element.kind === 'song'));
+    const { match: { params: { id } } } = this.props;
+    const musics = await getMusics(id);
     this.setState({
       musicas: musics,
       artistName: musics[0].artistName,
@@ -52,7 +49,19 @@ class Album extends Component {
 }
 
 Album.propTypes = {
-  history: PropTypes.string.isRequired,
+  // match: PropTypes.string,
+  match: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
+  params: PropTypes.string,
+  id: PropTypes.string,
+};
+
+Album.defaultProps = {
+  match: '',
+  params: '',
+  id: '',
 };
 
 export default Album;

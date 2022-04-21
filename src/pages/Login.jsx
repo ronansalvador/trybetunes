@@ -14,18 +14,6 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log('mudou DidMount');
-  }
-
-  componentDidUpdate() {
-    console.log('update');
-  }
-
-  componentWillUnmount() {
-    console.log('willUN');
-  }
-
   inputName = ({ target }) => {
     this.setState({
       name: target.value,

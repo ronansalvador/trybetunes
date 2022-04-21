@@ -9,7 +9,7 @@ class MusicCard extends Component {
     this.state = {
       checked: false,
       loading: false,
-      listFavorite: [],
+      // listFavorite: [],
     };
   }
 
@@ -24,14 +24,15 @@ class MusicCard extends Component {
     }
     // console.log(this.props.trackId);
     // console.log(this.state.checked);
-    this.setState({
-      listFavorite,
-    });
+    // this.setState({
+    //   listFavorite,
+    // });
   }
 
-  async componentDidUpdate() {
+  /*  async componentDidUpdate() {
+    console.log(this.props);
     await removeSong(this.props);
-  }
+  } */
 
   addFavorite = async () => {
     this.setState((prevState) => ({
@@ -42,12 +43,16 @@ class MusicCard extends Component {
     this.setState((prevState) => ({
       loading: !prevState.loading,
     }));
+    const { checked } = this.state;
+    if (!checked) {
+      await removeSong(this.props);
+    }
   }
 
   render() {
     const { musicName, previewUrl, trackId } = this.props;
-    const { checked, loading, listFavorite } = this.state;
-    console.log(listFavorite);
+    const { checked, loading } = this.state;
+    // console.log(listFavorite);
     return (
 
       <section>
@@ -81,7 +86,7 @@ class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
-  trackId: PropTypes.string.isRequired,
+  trackId: PropTypes.number.isRequired,
 };
 
 export default MusicCard;
