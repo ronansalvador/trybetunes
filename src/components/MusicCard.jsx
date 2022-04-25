@@ -35,6 +35,7 @@ class MusicCard extends Component {
   } */
 
   addFavorite = async () => {
+    const { getFavorite } = this.props;
     this.setState((prevState) => ({
       checked: !prevState.checked,
       loading: !prevState.loading,
@@ -45,13 +46,19 @@ class MusicCard extends Component {
     }));
     const { checked } = this.state;
     if (!checked) {
-      await removeSong(this.props);
+      removeSong(this.props);
+      console.log('apos remove');
+      // window.location.reload(false);
+    }
+    if (typeof getFavorite === 'function') {
+      getFavorite();
     }
   }
 
   render() {
     const { musicName, previewUrl, trackId } = this.props;
     const { checked, loading } = this.state;
+    // console.log(this.props);
     // console.log(listFavorite);
     return (
 
@@ -70,6 +77,7 @@ class MusicCard extends Component {
                 Favorita
                 <input
                   name="favorite"
+                  id="favorite"
                   type="checkbox"
                   data-testid={ `checkbox-music-${trackId}` }
                   checked={ checked }
@@ -86,7 +94,18 @@ class MusicCard extends Component {
 MusicCard.propTypes = {
   musicName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
-  trackId: PropTypes.number.isRequired,
+  trackId: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+  getFavorite: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+  ]),
+};
+
+MusicCard.defaultProps = {
+  getFavorite: '',
 };
 
 export default MusicCard;
