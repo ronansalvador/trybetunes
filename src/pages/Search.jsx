@@ -68,7 +68,7 @@ class Search extends Component {
               onChange={ this.inputSearch }
             />
             <button
-              type="button"
+              type="submit"
               data-testid="search-artist-button"
               value="Nome"
               onClick={ this.pesquisar }

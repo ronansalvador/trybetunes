@@ -26,7 +26,10 @@ class App extends React.Component {
             ) }
           />
           <Route path="/profile" component={ Profile } exact />
-          <Route path="/profile/edit" component={ ProfileEdit } exact />
+          <Route
+            path="/profile/edit"
+            render={ (props) => (<ProfileEdit { ...props } />) }
+          />
           <Route path="*" component={ NotFound } exact />
         </Switch>
       </div>

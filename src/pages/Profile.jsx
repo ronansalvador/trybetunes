@@ -32,18 +32,19 @@ class Profile extends Component {
     return (
 
       <div data-testid="page-profile">
-        {loading ? <Loading /> : (
-          <section>
-            <Header />
-            <h1>Profile</h1>
-            <p>{descriptionSaved}</p>
-            <p>{emailSaved}</p>
-            <p>{nameSaved}</p>
-            <img src={ imageSaved } alt="imagem de perfil" data-testid="profile-image" />
-            <Link to="/profile/edit">Editar perfil</Link>
+        { loading && <Loading /> }
+        <section>
+          <Header />
+          <h1>Profile</h1>
+          <p>{descriptionSaved}</p>
+          <p>{emailSaved}</p>
+          <p>{nameSaved}</p>
+          <img src={ imageSaved } alt="imagem de perfil" data-testid="profile-image" />
+          <Link to="/profile/edit">
+            Editar perfil
+          </Link>
+        </section>
 
-          </section>
-        )}
       </div>
     );
   }

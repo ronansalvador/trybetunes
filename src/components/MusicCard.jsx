@@ -47,7 +47,7 @@ class MusicCard extends Component {
     const { checked } = this.state;
     if (!checked) {
       removeSong(this.props);
-      console.log('apos remove');
+      // console.log('apos remove');
       // window.location.reload(false);
     }
     if (typeof getFavorite === 'function') {

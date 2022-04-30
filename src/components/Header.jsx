@@ -12,7 +12,11 @@ class Header extends Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.user();
+  }
+
+  user = async () => {
     this.setState({
       loading: true,
     });

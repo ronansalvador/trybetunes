@@ -67,7 +67,7 @@ class Login extends Component {
                   onChange={ this.inputName }
                 />
                 <button
-                  type="button"
+                  type="submit"
                   data-testid="login-submit-button"
                   value="Nome"
                   // onClick={ async () => { await createUser(this.state); } }
