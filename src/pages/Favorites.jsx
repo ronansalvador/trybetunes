@@ -30,6 +30,7 @@ class Favorites extends Component {
    getFavorite = async () => {
      this.setState({ loading: true });
      const favoritas = await getFavoriteSongs();
+     console.log(favoritas);
      this.setState({
        favoritas,
        loading: false,
@@ -62,7 +63,7 @@ class Favorites extends Component {
             {favoritas.map((element, index) => (
               <section key={ index }>
                 <MusicCard
-                  musicName={ element.trackName }
+                  trackName={ element.trackName }
                   previewUrl={ element.previewUrl }
                   trackId={ element.trackId }
                   getFavorite={ this.getFavorite }

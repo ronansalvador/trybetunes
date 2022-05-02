@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import styles from './MusicCard.module.css';
 
 class MusicCard extends Component {
   constructor() {
@@ -56,16 +57,17 @@ class MusicCard extends Component {
   }
 
   render() {
-    const { musicName, previewUrl, trackId } = this.props;
+    const { trackName, previewUrl, trackId } = this.props;
+    console.log(this.props);
     const { checked, loading } = this.state;
     // console.log(this.props);
     // console.log(listFavorite);
     return (
 
-      <section>
+      <section className={ styles.musicCard }>
         {loading ? <Loading /> : (
           <>
-            <p>{musicName}</p>
+            <p>{trackName}</p>
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
@@ -92,7 +94,7 @@ class MusicCard extends Component {
 }
 
 MusicCard.propTypes = {
-  musicName: PropTypes.string.isRequired,
+  trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.oneOfType([
     PropTypes.number,

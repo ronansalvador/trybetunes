@@ -1,0 +1,22 @@
+.album {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.albumInfo {
+  width: 350px;
+}
+
+.albumInfo img {
+  border-radius: 6px;
+  height: 290px;
+  width: 290px;
+}
+
+.music {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 700px;
+}

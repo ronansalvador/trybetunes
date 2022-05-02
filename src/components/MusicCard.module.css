@@ -1,0 +1,21 @@
+.musicCard {
+  align-items: center;
+  border-bottom: 1px solid #e1e5eb;
+  border-top: 1px solid #e1e5eb;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.musicCard audio {
+  width: 380px;
+}
+
+.musicCard p {
+  width: 200px;
+}
+
+.musicCard form {
+  margin-left: 20px;
+  width: 100px;
+}
