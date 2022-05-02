@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import logo from '../images/logo.svg';
+import styles from './Login.module.css';
 
 class Login extends Component {
   constructor() {
@@ -56,12 +58,13 @@ class Login extends Component {
       <div data-testid="page-login">
         {loading ? <Loading />
           : (
-            <section>
-              <h1>Login</h1>
+            <section className={ styles.container }>
+              <img src={ logo } alt="logo TrybeTunes" />
               <form>
                 <input
                   type="text"
                   data-testid="login-name-input"
+                  id="user"
                   placeholder="User"
                   value={ name }
                   onChange={ this.inputName }

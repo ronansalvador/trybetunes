@@ -1,0 +1,9 @@
+.loading {
+  background-color: var(--main-color);
+  color: red;
+  font-size: xx-large;
+  height: 100vh;
+  width: 100vw;
+
+  /* z-index: 0; */
+}

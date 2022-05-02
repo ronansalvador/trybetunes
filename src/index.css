@@ -1,5 +1,16 @@
-:root {
-  --main-color: #33571C;
+:root {  
+  --main-color: #fafafa;
+  --secondary-color: #181725;
+  --accent: #003BE5;
+  --dark-green:#023031;
+  --light-green:#036B52;
+  --green: #2FC18C;
+  --white: white;
+  --gray: #F0F2F5;
+}
+
+body {
+  background-color: var(--main-color);
 }
 
 html {

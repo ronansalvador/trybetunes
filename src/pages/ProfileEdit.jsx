@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getUser, updateUser } from '../services/userAPI';
+import styles from './ProfileEdit.module.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -68,8 +69,8 @@ class ProfileEdit extends Component {
       emailSaved, imageSaved, nameSaved, isDisabled } = this.state;
     return (
       <div data-testid="page-profile-edit">
-        <section>
-          <Header />
+        <Header />
+        <section className={ styles.container }>
           <h1>ProfileEdit</h1>
           <form>
             <label htmlFor="name-user">

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
-import './search.css';
+import styles from './Search.module.css';
 
 class Search extends Component {
   constructor() {
@@ -57,39 +57,41 @@ class Search extends Component {
     const { busca, button, loading, result, buscado } = this.state;
     return (
       <div data-testid="page-search">
-        <Header />
         {loading ? <Loading /> : (
-          <form>
-            <input
-              type="text"
-              data-testid="search-artist-input"
-              placeholder="Pesquisa"
-              value={ busca }
-              onChange={ this.inputSearch }
-            />
-            <button
-              type="submit"
-              data-testid="search-artist-button"
-              value="Nome"
-              onClick={ this.pesquisar }
-              disabled={ button }
-            >
-              Pesquisar
-            </button>
-          </form>)}
+          <section>
+            <Header />
+            <form className={ styles.search }>
+              <input
+                type="text"
+                data-testid="search-artist-input"
+                placeholder="Pesquisa"
+                value={ busca }
+                onChange={ this.inputSearch }
+              />
+              <button
+                type="submit"
+                data-testid="search-artist-button"
+                value="Nome"
+                onClick={ this.pesquisar }
+                disabled={ button }
+              >
+                Pesquisar
+              </button>
+            </form>
+          </section>)}
         {result.length > 0
           && (
-            <div>
-              <p>
+            <div className={ styles.results }>
+              <h2>
                 { `Resultado de álbuns de: ${buscado}` }
-              </p>
-              <section className="albuns">
+              </h2>
+              <section className={ styles.albuns }>
                 {result.map((element, index) => (
-                  <div key={ index } className="album">
+                  <div key={ index } className={ styles.album }>
                     <Link
                       to={ `/album/${element.collectionId}` }
                       data-testid={ `link-to-album-${element.collectionId}` }
-                      className="link-album"
+                      className={ styles.linkAlbum }
                     >
                       <img
                         src={ element.artworkUrl100 }
@@ -103,8 +105,8 @@ class Search extends Component {
             </div>)}
         {(result.length < 1 && buscado.length > 0)
           && (
-            <div>
-              <p>Nenhum álbum foi encontrado</p>
+            <div className={ styles.results }>
+              <h2>Nenhum álbum foi encontrado</h2>
             </div>)}
       </div>
     );
