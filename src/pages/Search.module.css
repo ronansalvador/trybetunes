@@ -6,11 +6,43 @@
 }
 
 .album {
-  border: 1px solid var(--light-green);
+
+  /* border: 1px solid var(--light-green); */
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06) , 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   margin: 10px;
   padding: 10px;
   width: 200px;
+}
+
+.album img {
+  border-radius: 6px;
+  margin-bottom: 5px;
+  width: 95%;
+}
+
+.album a {
+  text-decoration: none;
+}
+
+.album p {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.artistName {
+  color: #3d495c;
+}
+
+.albunName {
+  color: var(--dark-green);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%;
 }
 
 .search {

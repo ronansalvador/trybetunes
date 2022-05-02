@@ -97,8 +97,8 @@ class Search extends Component {
                         src={ element.artworkUrl100 }
                         alt={ `imagem do album ${element.collectionName}` }
                       />
-                      <p>{element.collectionName}</p>
-                      <p>{ element.artistName }</p>
+                      <p className={ styles.albunName }>{element.collectionName}</p>
+                      <p className={ styles.artistName }>{ element.artistName }</p>
                     </Link>
                   </div>))}
               </section>
