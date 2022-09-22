@@ -1,5 +1,5 @@
 # Projeto
-Neste projeto foi desenvolvido o TrybeTunes, uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas, criar uma lista de músicas favoritas e editar o perfil da pessoa usuária logada. Essa aplicação será capaz de:
+Neste projeto foi desenvolvido o TrybeTunes, uma aplicação capaz de reproduzir músicas das mais variadas bandas e artistas, criar uma lista de músicas favoritas e editar o perfil da pessoa usuária logada. Nesta aplicação é possível:
 
   - Fazer login;
   - Pesquisar por uma banda ou artista;
